@@ -1,5 +1,5 @@
 # Restful API CRUD Spring Boot + Hibernate + Mysql Database #
-Restful API CRUD using Spring Boot +Hibernate and Mysql Database
+Restful API CRUD using Spring Boot + Hibernate JPA and Mysql Database
 
 # Dependencies #
 * Spring Web
