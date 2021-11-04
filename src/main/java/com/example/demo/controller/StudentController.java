@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.Student;
@@ -25,14 +26,14 @@ public class StudentController {
 	// fetches all resources
 
 	@GetMapping("/student")
-	public Collection<Student> getAllStudents() {
+	public  @ResponseBody Collection<Student> getAllStudents() {
 		return studentService.getStudents();
 	}
 
 	// fetches resource
 	
 	@GetMapping("/student/{id}")
-	public Student getStudent(@PathVariable int id) {
+	public  @ResponseBody Student getStudent(@PathVariable int id) {
 		Optional<Student> student = studentService.findStudent(id);
 		if (student.isPresent()) {
 			return student.get();
@@ -44,13 +45,13 @@ public class StudentController {
 	// creates resource
 	
 	@PostMapping("/student/create")
-	public String createStudent(@RequestBody Student student) {
+	public @ResponseBody String createStudent(@RequestBody Student student) {
 		studentService.createStudent(student);
 		return "Student " + student.getFirstName() + " " + student.getLastName() + " created";
 	}
 	
 	@PostMapping("/student/create/multiple")
-	public String createStudent(@RequestBody List<Student> students) {
+	public  @ResponseBody String createStudent(@RequestBody List<Student> students) {
 		try {
 			studentService.createStudents(students);
 			return "Student(s) created"; 
@@ -64,7 +65,7 @@ public class StudentController {
 	// updates resource
 
 	@PutMapping("/student/update/{id}")
-	public String updateStudent(@RequestBody Student student, @PathVariable int id) {
+	public  @ResponseBody String updateStudent(@RequestBody Student student, @PathVariable int id) {
 		Optional<Student> result = studentService.findStudent(id);
 		if (result.isPresent()) {
 			studentService.updateStudent(student);
@@ -78,7 +79,7 @@ public class StudentController {
 	// updates multiple resources
 	
 	@PutMapping("/student/update")
-	public String updateStudents(@RequestBody List<Student> students) {
+	public  @ResponseBody String updateStudents(@RequestBody List<Student> students) {
 		
 		try {
 			studentService.updateStudents(students);
@@ -92,7 +93,7 @@ public class StudentController {
 	// deletes resource
 
 	@DeleteMapping("/student/delete/{id}")
-	public String deleteStudent(@PathVariable int id) {
+	public @ResponseBody String deleteStudent(@PathVariable int id) {
 		Optional<Student> result = studentService.findStudent(id);
 		if (result.isPresent()) {
 			studentService.deleteStudent(id);
@@ -106,7 +107,7 @@ public class StudentController {
 	// deletes multiple resources
 
 	@DeleteMapping(value = "/student/delete", params = "ids")
-	public String deleteStudents(@RequestParam  List<Integer> ids) {
+	public @ResponseBody String deleteStudents(@RequestParam  List<Integer> ids) {
 		try {
 			studentService.deleteStudents(ids);
 			return "Student(s) deleted";

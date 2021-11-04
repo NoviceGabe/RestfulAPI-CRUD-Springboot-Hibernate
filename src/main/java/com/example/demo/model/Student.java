@@ -13,11 +13,11 @@ public class Student {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
-	@Column(name="first_name")
+	@Column(name="first_name", nullable = false)
 	private String firstName;
-	@Column(name="last_name")
+	@Column(name="last_name", nullable = false)
 	private String lastName;
-	@Column(name="email")
+	@Column(name="email", nullable = false)
 	private String email;
 	
 	public int getId() {
@@ -45,7 +45,9 @@ public class Student {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	@Override
+	public String toString() {
+		return "Student [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + "]";
+	}
 	
-	
-
 }
