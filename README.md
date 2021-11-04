@@ -12,5 +12,5 @@ Restful API CRUD using Spring Boot +Hibernate and Mysql Database
 
 # Installation #
 * Import project as existing Maven project
-* Import test.sql located in "RestfulAPI-CRUD-Springboot-Hibernate\src\main\java\com\example\demo\config\" to your mysql server
+* Import test.sql located in "restful-api-crud-springboot-hibernate-mysql-master\src\main\java\com\example\demo\config\" to your mysql server
 
