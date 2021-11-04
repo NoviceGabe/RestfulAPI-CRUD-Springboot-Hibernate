@@ -48,7 +48,7 @@ public class StudentController {
 	@PostMapping("/student/create")
 	public String createStudent(@RequestBody Student student) {
 		studentService.createStudent(student);
-		return "Student " + student.getFirst_name() + " " + student.getLast_name() + " created";
+		return "Student " + student.getFirstName() + " " + student.getLastName() + " created";
 	}
 	
 	@PostMapping("/student/create/multiple")
@@ -58,7 +58,7 @@ public class StudentController {
 			return "Student(s) created"; 
 		}catch(Exception e) {
 			e.printStackTrace();
-			return "No Student(s) not created"; 
+			return "No Student(s) created"; 
 		}
 		
 	}
@@ -70,7 +70,7 @@ public class StudentController {
 		Optional<Student> result = studentService.findStudent(id);
 		if (result.isPresent()) {
 			studentService.updateStudent(student);
-			return "Student " + student.getFirst_name() + " " + student.getLast_name() + " updated";
+			return "Student " + student.getFirstName() + " " + student.getLastName() + " updated";
 		}
 
 		return "Student not updated";
@@ -87,7 +87,7 @@ public class StudentController {
 			return "Student(s) updated";
 		}catch(Exception e) {
 			e.printStackTrace();
-			return  "No Student(s) not updated";
+			return  "No Student(s) updated";
 		}
 	}
 
@@ -99,7 +99,7 @@ public class StudentController {
 		if (result.isPresent()) {
 			studentService.deleteStudent(id);
 			Student student = result.get();
-			return "Student " + student.getFirst_name() + " " + student.getLast_name() + " deleted";
+			return "Student " + student.getFirstName() + " " + student.getLastName() + " deleted";
 		}
 
 		return "Student not deleted";
@@ -114,7 +114,7 @@ public class StudentController {
 			return "Student(s) deleted";
 		}catch(Exception e) {
 			e.printStackTrace();
-			return "No Student(s) not deleted";
+			return "No Student(s) deleted";
 		}
 	}
 }
